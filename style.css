@@ -1,0 +1,1630 @@
+/* Общие стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #e0e0e0;
+    background-color: #0f0f1e;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(76, 0, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 221, 0.15) 0%, transparent 40%);
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+header {
+    background-color: rgba(15, 15, 30, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(76, 0, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+    color: #fff;
+    background-color: rgba(76, 0, 255, 0.6);
+    box-shadow: 0 0 15px rgba(76, 0, 255, 0.4);
+    border-color: rgba(76, 0, 255, 0.6);
+}
+
+/* Основной контент */
+main {
+    padding: 40px 0;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(76, 0, 255, 0.6);
+}
+
+/* Список товаров */
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.item {
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff00ea, #00aaff);
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item:hover::before {
+    opacity: 1;
+}
+
+.item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 25px rgba(76, 0, 255, 0.4);
+}
+
+.item-image {
+    width: 100%;
+    padding-top: 100%; /* Создаем квадратный контейнер */
+    position: relative;
+    overflow: hidden;
+}
+
+.item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.item:hover .item-image img {
+    transform: scale(1.1);
+}
+
+.item-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.item p {
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff00ea, #00aaff);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 234, 0.6);
+    transform: translateY(-2px);
+}
+
+.seller-info {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(76, 0, 255, 0.3);
+}
+
+.seller-info img.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid #00aaff;
+}
+
+/* Анимации */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(76, 0, 255, 0.6); }
+    50% { box-shadow: 0 0 20px rgba(76, 0, 255, 0.8), 0 0 30px rgba(255, 0, 221, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(76, 0, 255, 0.6); }
+}
+
+.item:hover {
+    animation: glow 1.5s infinite;
+}
+
+/* Стили для hero-section и поисковой строки */
+.hero-section {
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    padding: 60px 0;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.hero-section h1 {
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    color: #bbb;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #bbb;
+}
+
+.search-bar select {
+    padding: 15px 40px 15px 20px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px auto;
+}
+
+.search-bar button {
+    padding: 15px 25px;
+    border: none;
+    background: linear-gradient(45deg, #ff00ea, #00aaff);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background: linear-gradient(45deg, #00aaff, #ff00ea);
+}
+
+/* Стили для контейнера товаров */
+.featured-items h2 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.item-price {
+    color: #00aaff;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item-category {
+    color: #bbb;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.seller-name {
+    color: #bbb;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.seller-name:hover {
+    color: #fff;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating i {
+    color: #ffd700;
+    margin-right: 5px;
+}
+
+.rating span {
+    color: #bbb;
+    font-size: 0.9em;
+}
+
+.no-items {
+    color: #bbb;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 30px;
+}
+
+/* Стили для страницы товара */
+.item-details {
+    display: flex;
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.item-details .item-image {
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    overflow: hidden;
+    padding-top: 50%;
+}
+
+.item-details .item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.item-details .item-info {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-details .price {
+    font-size: 1.5em;
+    color: #00aaff;
+    margin-bottom: 20px;
+}
+
+.item-details .description {
+    margin-bottom: 20px;
+    color: #bbb;
+}
+
+/* Стили для чата */
+.chat-container {
+    background-color: rgba(30, 30, 40, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.chat-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.chat-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.8em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.chat-container h2 i {
+    margin-right: 10px;
+    color: #00aaff;
+}
+
+.messages {
+    height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: rgba(40, 40, 50, 0.6);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(52, 152, 219, 0.5) rgba(255, 255, 255, 0.1);
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+.message-avatar:hover {
+    transform: scale(1.1);
+}
+
+.message-content {
+    background-color: rgba(60, 60, 70, 0.8);
+    border-radius: 18px;
+    padding: 12px 18px;
+    max-width: 70%;
+    word-wrap: break-word;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.message.sent {
+    justify-content: flex-end;
+}
+
+.message.sent .message-content {
+    background-color: rgba(52, 152, 219, 0.8);
+    color: #fff;
+}
+
+.message.received .message-content {
+    background-color: rgba(70, 70, 80, 0.8);
+    color: #fff;
+}
+
+.message-content p {
+    margin-bottom: 5px;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.message-content span {
+    font-size: 0.8em;
+    opacity: 0.7;
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.message-form {
+    display: flex;
+    align-items: center;
+    background-color: rgba(50, 50, 60, 0.8);
+    border-radius: 25px;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.message-form:focus-within {
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+}
+
+.message-form textarea {
+    flex-grow: 1;
+    padding: 12px 18px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    resize: none;
+    height: 40px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.message-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.message-form .btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.message-form .btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+.message-form .btn i {
+    font-size: 1.2em;
+}
+
+/* Стили для скроллбара в чате */
+.messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background: rgba(52, 152, 219, 0.5);
+    border-radius: 3px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(52, 152, 219, 0.7);
+}
+
+/* Стили для профиля пользователя */
+.profile-container {
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.profile-container .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00aaff;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.6);
+    margin-bottom: 20px;
+}
+
+.profile-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profile-container h3 {
+    color: #00aaff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.file-input {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-input input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-input label.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff00ea, #00aaff);
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-input:hover label.btn {
+    background: linear-gradient(45deg, #00aaff, #ff00ea);
+}
+
+.file-name {
+    margin-left: 10px;
+    color: #bbb;
+}
+
+/* Стили для страниц логина и регистрации */
+.login-container,
+.register-container {
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.login-container h2,
+.register-container h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container p,
+.register-container p {
+    color: #bbb;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00aaff;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff00ea, #00aaff);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #00aaff, #ff00ea);
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Дополнительные стили */
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff6b6b;
+}
+
+.invalid-feedback {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+a {
+    color: #00aaff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff00ea;
+}
+
+/* Стили для выпадающего списка */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: rgba(25, 25, 40, 0.8);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    border-radius: 5px;
+    padding: 10px 30px 10px 10px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 20px auto;
+    transition: all 0.3s ease;
+}
+
+select:hover, select:focus {
+    background-color: rgba(76, 0, 255, 0.3);
+    border-color: #00aaff;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+}
+
+/* Стили для опций в выпадающем списке */
+select option {
+    background-color: #1a1a2e;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Стили для выпадающего списка при открытии */
+select::-ms-expand {
+    display: none;
+}
+
+select:focus::-ms-value {
+    background-color: transparent;
+    color: #fff;
+}
+
+/* Для Firefox */
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #fff;
+}
+
+/* Для Chrome и Safari на macOS */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {
+        padding-right: 30px;
+    }
+}
+
+/* Стили для профиля продавца */
+.seller-profile {
+    background: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #00aaff;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.6);
+    margin-right: 30px;
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.star-rating {
+    font-size: 24px;
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.star-rating .fa-star {
+    margin-right: 5px;
+}
+
+.rating-value {
+    font-size: 18px;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.section-title {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.6);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .item-details {
+        flex-direction: column;
+    }
+
+    .item-details .item-image,
+    .item-details .item-info {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .chat-container {
+        margin-top: 20px;
+    }
+
+    .messages {
+        height: 300px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .avatar-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input[type="text"],
+    .search-bar select,
+    .search-bar button {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-info h1 {
+        font-size: 1.8em;
+    }
+
+    .item-info .price {
+        font-size: 1.4em;
+    }
+
+    .message-content {
+        max-width: 85%;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+/* Дополнительные анимации */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.item-details:hover .item-image img {
+    animation: pulse 2s infinite;
+}
+
+.chat-container h2 i {
+    animation: pulse 2s infinite;
+}
+
+/* Стили для кнопки прокрутки вверх */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(76, 0, 255, 0.6);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.scroll-to-top:hover {
+    background-color: rgba(76, 0, 255, 0.8);
+    box-shadow: 0 0 15px rgba(76, 0, 255, 0.4);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Стили для модальных окон */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: rgba(25, 25, 40, 0.9);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стили для уведомлений */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(76, 0, 255, 0.8);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для загрузчика */
+.loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(76, 0, 255, 0.3);
+    border-top: 5px solid #00aaff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Стили для страницы добавления товара */
+.add-item-section {
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-item-form .form-group {
+    margin-bottom: 20px;
+}
+
+.add-item-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.add-item-form input[type="text"],
+.add-item-form input[type="number"],
+.add-item-form textarea,
+.add-item-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(76, 0, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.add-item-form input[type="text"]:focus,
+.add-item-form input[type="number"]:focus,
+.add-item-form textarea:focus,
+.add-item-form select:focus {
+    outline: none;
+    border-color: #00aaff;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+}
+
+.add-item-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.add-item-form .file-input {
+    display: flex;
+    align-items: center;
+}
+
+.add-item-form .file-input input[type="file"] {
+    display: none;
+}
+
+.add-item-form .file-input label {
+    background: linear-gradient(45deg, #ff00ea, #00aaff);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-item-form .file-input label:hover {
+    background: linear-gradient(45deg, #00aaff, #ff00ea);
+}
+
+.add-item-form .file-name {
+    margin-left: 10px;
+    color: #bbb;
+}
+
+.add-item-form .price-info {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-top: 5px;
+}
+
+/* Стили для футера */
+footer {
+    background-color: rgba(15, 15, 30, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Дополнительные стили для улучшения читаемости и интерактивности */
+.item-details .item-info h1 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.item-details .price {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.item-details .description {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.seller-info {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.seller-info .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.seller-info span {
+    font-size: 1.1em;
+}
+
+/* Улучшенные стили для кнопок */
+.btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для улучшения доступности */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline: 2px solid #00aaff;
+    outline-offset: 2px;
+}
+
+/* Стили для подсказок */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Стили для улучшения контраста и читаемости */
+body {
+    line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+}
+
+/* Дополнительные стили для улучшения пользовательского опыта на мобильных устройствах */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-section {
+        padding: 40px 0;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input,
+    .search-bar select,
+    .search-bar button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .item {
+        margin-bottom: 20px;
+    }
+
+    .item-details {
+        flex-direction: column;
+    }
+
+    .item-details .item-image,
+    .item-details .item-info {
+        width: 100%;
+    }
+
+    .message-form textarea {
+        width: 70%;
+    }
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.role-badge.admin {
+    background-color: #ff4757;
+    color: white;
+}
+
+.role-badge.moderator {
+    background-color: #5352ed;
+    color: white;
+}
+
+.role-badge.support {
+    background-color: #2ed573;
+    color: white;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: all 0.3s ease;
+}
+
+.avatar-small:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(25, 25, 40, 0.9);
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(76, 0, 255, 0.6);
+}
+
+.user-menu:hover .dropdown-content {
+    display: block;
+}
+
+.ban-form {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.ban-form h3 {
+    color: #ff4757;
+    margin-bottom: 10px;
+}
+
+.ban-info {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+    color: #ff4757;
+    margin-top: 10px;
+}
+
+.btn-danger {
+    background-color: #ff4757;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #ff6b6b;
+}
+
+.unban-form {
+    margin-top: 20px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.ban-reason {
+    color: #dc3545;
+    font-style: italic;
+}
+
+/* Стили для страницы бана */
+.ban-section {
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.ban-section h1 {
+    color: #ff4757;
+    margin-bottom: 20px;
+}
+
+.ban-info {
+    background-color: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.ban-info p {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.ban-info strong {
+    color: #ff4757;
+}
+
+.sad-goose {
+    max-width: 200px;
+    margin: 20px auto;
+    display: block;
+}
+
+.ban-info a {
+    color: #00aaff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ban-info a:hover {
+    color: #ff00ea;
+}
+
+/* Стили для страницы списка чатов */
+.chat-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.chat-list-title {
+    font-size: 2.5em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(76, 0, 255, 0.6);
+}
+
+.chat-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.chat-item {
+    background-color: rgba(25, 25, 40, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(76, 0, 255, 0.3);
+}
+
+.chat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(76, 0, 255, 0.2);
+}
+
+.chat-item a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.chat-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #00aaff;
+}
+
+.chat-item p {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.chat-item .item-id {
+    font-weight: bold;
+    color: #ff00ea;
+}
+
+.chat-item .last-message {
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-item .message-time {
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* Анимация для chat-item */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(76, 0, 255, 0.6); }
+    50% { box-shadow: 0 0 20px rgba(76, 0, 255, 0.8), 0 0 30px rgba(255, 0, 221, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(76, 0, 255, 0.6); }
+}
+
+.chat-item:hover {
+    animation: glow 1.5s infinite;
+}
+
+/* Стили для пагинации */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination a {
+    color: #fff;
+    background-color: rgba(76, 0, 255, 0.6);
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: rgba(255, 0, 221, 0.6);
+}
+
+.pagination .active {
+    background-color: rgba(255, 0, 221, 0.6);
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 768px) {
+    .chat-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.item-price-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.current-price {
+    font-weight: bold;
+    color: #00aaff;
+    font-size: 1.2em;
+}
+
+.discount-badge {
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    margin-right: 10px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 1.5s infinite;
+}
+
+.discount-badge::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+.dropdown-content .balance {
+    background-color: rgba(0, 170, 255, 0.1);
+    border-bottom: 1px solid #00aaff;
+    font-weight: bold;
+    cursor: default;
+}
+
+.dropdown-content .balance:hover {
+    background-color: rgba(0, 170, 255, 0.2);
+}
